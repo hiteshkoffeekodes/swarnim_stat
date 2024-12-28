@@ -761,16 +761,16 @@ const FirstPages = () => {
   }, []);
   // ------------------------
 
-  const [currentInputIndex, setCurrentInputIndex] = useState(0);
-  const inputIds = ["text", "email", "search"];
-  const placeholders = ["Full Name", "Email", "Subject"];
+  // const [currentInputIndex, setCurrentInputIndex] = useState(0);
+  // const inputIds = ["text", "email", "search"];
+  // const placeholders = ["Full Name", "Email", "Subject"];
 
-  const handleAnimationComplete = () => {
-    // Move to the next input when the current one finishes animating
-    if (currentInputIndex < inputIds.length - 1) {
-      setCurrentInputIndex((prev) => prev + 1);
-    }
-  };
+  // const handleAnimationComplete = () => {
+  //   // Move to the next input when the current one finishes animating
+  //   if (currentInputIndex < inputIds.length - 1) {
+  //     setCurrentInputIndex((prev) => prev + 1);
+  //   }
+  // };
 
   // -----------------------------
 

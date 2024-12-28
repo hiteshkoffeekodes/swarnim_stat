@@ -29,7 +29,7 @@ const FeaturessPage = () => {
 
   const inputIds = ["text", "email", "search"];
   const placeholders = ["Full Name", "Email", "Subject"];
-  const [currentInputIndex, setCurrentInputIndex] = useState(0);
+  // const [currentInputIndex, setCurrentInputIndex] = useState(0);
 
   const placeholderText = "Email";
   const [displayedText, setDisplayedText] = useState("");
@@ -37,12 +37,12 @@ const FeaturessPage = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
 
-  const handleAnimationComplete = () => {
-    // Move to the next input when the current one finishes animating
-    if (currentInputIndex < inputIds.length - 1) {
-      setCurrentInputIndex((prev) => prev + 1);
-    }
-  };
+  // const handleAnimationComplete = () => {
+  //   // Move to the next input when the current one finishes animating
+  //   if (currentInputIndex < inputIds.length - 1) {
+  //     setCurrentInputIndex((prev) => prev + 1);
+  //   }
+  // };
 
   useEffect(() => {
     const textElement = textRef.current;
@@ -295,8 +295,8 @@ const FeaturessPage = () => {
                         id={id}
                         placeholder={placeholders[index]}
                         className="border-[--goldenborder]"
-                        isAnimating={index === currentInputIndex} // Animate only the focused input
-                        onAnimationComplete={handleAnimationComplete} // Handle when animation is complete
+                        // isAnimating={index === currentInputIndex} // Animate only the focused input
+                        // onAnimationComplete={handleAnimationComplete} // Handle when animation is complete
                       />
                     ))}
                   </form>
