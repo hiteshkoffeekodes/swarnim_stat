@@ -19,9 +19,64 @@ import message1 from "@/Image/message1.svg";
 import message2 from "@/Image/message2.svg";
 import message3 from "@/Image/message3.svg";
 import testimonialline from "@/Image/testimonialline.svg";
+import AboutUsCaresoul from "@/Component/Caresoul/aboutuspage";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-gsap.registerPlugin(TextPlugin);
-gsap.registerPlugin(ScrollTrigger);
+
+ const milestones = [
+   {
+     title: "Our Milestones",
+     year: "2022-2023",
+     description:
+       "Lorem ipsum dolor sit amet consectetur. Ac ligula egestas bibendum amet quis vel commodo duis leo. Justo ornare congue lorem duis tempor. Ultrices vitae condimentum sit vitae. Risus ultrices viverra fermentum ac dapibus sagittis volutpat. Id dignissim volutpat mauris sed sapien morbi erat fringilla aliquet.",
+   },
+   {
+     title: "Start From",
+     year: "2022-2023",
+     description:
+       "Lorem ipsum dolor sit amet consectetur. Ac ligula egestas bibendum amet quis vel commodo duis leo. Justo ornare congue lorem duis tempor. Ultrices vitae condimentum sit vitae. Risus ultrices viverra fermentum ac dapibus sagittis volutpat. Id dignissim volutpat mauris sed sapien morbi erat fringilla aliquet.",
+   },
+   {
+     title: "Research Work",
+     year: "2022-2023",
+     description:
+       "Lorem ipsum dolor sit amet consectetur. Ac ligula egestas bibendum amet quis vel commodo duis leo. Justo ornare congue lorem duis tempor. Ultrices vitae condimentum sit vitae. Risus ultrices viverra fermentum ac dapibus sagittis volutpat. Id dignissim volutpat mauris sed sapien morbi erat fringilla aliquet.",
+   },
+   {
+     title: "Our Milestones",
+     year: "2022-2023",
+     description:
+       "Lorem ipsum dolor sit amet consectetur. Ac ligula egestas bibendum amet quis vel commodo duis leo. Justo ornare congue lorem duis tempor. Ultrices vitae condimentum sit vitae. Risus ultrices viverra fermentum ac dapibus sagittis volutpat. Id dignissim volutpat mauris sed sapien morbi erat fringilla aliquet.",
+   },
+   {
+     title: "Start From",
+     year: "2022-2023",
+     description:
+       "Lorem ipsum dolor sit amet consectetur. Ac ligula egestas bibendum amet quis vel commodo duis leo. Justo ornare congue lorem duis tempor. Ultrices vitae condimentum sit vitae. Risus ultrices viverra fermentum ac dapibus sagittis volutpat. Id dignissim volutpat mauris sed sapien morbi erat fringilla aliquet.",
+   },
+   {
+     title: "Research Work",
+     year: "2022-2023",
+     description:
+       "Lorem ipsum dolor sit amet consectetur. Ac ligula egestas bibendum amet quis vel commodo duis leo. Justo ornare congue lorem duis tempor. Ultrices vitae condimentum sit vitae. Risus ultrices viverra fermentum ac dapibus sagittis volutpat. Id dignissim volutpat mauris sed sapien morbi erat fringilla aliquet.",
+   },
+ ];
+
+const settings = {
+  dots: false, // Show dots if needed
+  arrows: false,
+  infinite: true,
+  speed: 1000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3000, // Slide changes every 3 seconds
+  vertical: true, // Enables vertical sliding
+  verticalSwiping: true, // Smooth vertical swiping
+  pauseOnHover: false,
+};
 
 const AboutPage = () => {
   const textRef = useRef(null);
@@ -234,8 +289,10 @@ const AboutPage = () => {
       <div className="h-dvh bg-[--blackish] ">
         <div className="w-full flex justify-center h-full items-center">
           <div className="grid grid-cols-12 w-full h-full">
-            <div className="col-span-2"></div>
-            <div className="col-span-5">
+            <div className="col-span-2">
+              <AboutUsCaresoul />{" "}
+            </div>
+            <div className="col-span-5 ml-4">
               <div className="h-full flex justify-center items-center ">
                 <div className=" max-w-screen-lg mx-auto container space-y-6">
                   <h1 className="font-extrabold text-font20 text-[--whitish] uppercase">
@@ -255,6 +312,27 @@ const AboutPage = () => {
               </div>
             </div>
             <div className="col-span-5">
+              <div className="h-full flex justify-center items-center">
+                <div className="max-w-screen-lg mx-auto container space-y-6 -mt-10">
+                  <Slider {...settings}>
+                    {milestones.map((milestone, index) => (
+                      <div key={index} className="space-y-2">
+                        <h1 className="font-extrabold text-font20 text-[--whitish] uppercase">
+                          {milestone.title}
+                        </h1>
+                        <h1 className="font-extrabold uppercase text-font30 lg:w-[70%] lg:text-chapter leading-[52px] text-[--white]">
+                          {milestone.year}
+                        </h1>
+                        <h1 className="font-normal text-font12 py-2 text-[--white] max-w-[400px]">
+                          {milestone.description}
+                        </h1>
+                      </div>
+                    ))}
+                  </Slider>
+                </div>
+              </div>
+            </div>
+            {/* <div className="col-span-5">
               <div className="h-full flex justify-center items-center ">
                 <div className=" max-w-screen-lg mx-auto container space-y-6 -mt-10">
                   <h1 className="font-extrabold text-font20 text-[--whitish] uppercase">
@@ -273,7 +351,7 @@ const AboutPage = () => {
                   </h1>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
