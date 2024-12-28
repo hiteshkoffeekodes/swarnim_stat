@@ -1572,7 +1572,7 @@ const FirstPages = () => {
                     Need More Help?
                   </h1>
 
-                  {/* <form className="space-y-4">
+                  <form className="space-y-4">
                     <AnimatedPlaceholderInput
                       id="text"
                       placeholder="Full Name"
@@ -1590,8 +1590,8 @@ const FirstPages = () => {
                       placeholder="Subject"
                       className="border-[--goldenborder]"
                     />
-                  </form> */}
-                  <form className="space-y-4">
+                  </form>
+                  {/* <form className="space-y-4">
                     {inputIds.map((id, index) => (
                       <AnimatedPlaceholderInput
                         key={id}
@@ -1602,7 +1602,7 @@ const FirstPages = () => {
                         onAnimationComplete={handleAnimationComplete} // Handle when animation is complete
                       />
                     ))}
-                  </form>
+                  </form> */}
 
                   <textarea
                     id="message"

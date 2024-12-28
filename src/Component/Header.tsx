@@ -19,8 +19,8 @@ const Header = () => {
   // Function to determine active page style
   const getActiveClass = (page: string) => {
     return pathname === page
-      ? "text-[--orange] font-bold uppercase" // Active page style
-      : "text-[--black] hover:text-[--orange] font-bold uppercase"; // Default style
+      ? "text-[--orange] font-bold uppercase cursor-pointer" // Active page style
+      : "text-[--black] hover:text-[--orange] font-bold uppercase cursor-pointer"; // Default style
   };
 
   return (
