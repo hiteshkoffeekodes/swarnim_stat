@@ -47,6 +47,18 @@ html {
   }
 }
 
+.aboushadow {
+  background-image: none;
+}
+
+@media (min-width: 1240px) {
+  .aboushadow {
+    background-image: url("../../public/image/aboushadow.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
 .bgfeaturespage {
   background-image: none;
 }
@@ -451,5 +463,3 @@ padding-top: 25px;
 }
 
 
-
- 

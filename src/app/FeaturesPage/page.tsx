@@ -27,7 +27,7 @@ const FeaturessPage = () => {
   const imageRef = useRef(null);
   const linesRefimg = useRef(null);
 
-  const inputIds = ["text", "email", "search"];
+  // const inputIds = ["text", "email", "search"];
   const placeholders = ["Full Name", "Email", "Subject"];
   // const [currentInputIndex, setCurrentInputIndex] = useState(0);
 
@@ -118,6 +118,12 @@ const FeaturessPage = () => {
 
     return () => clearTimeout(timeout);
   }, [currentIndex, isDeleting, placeholderText, isFocused]);
+
+  const [currentField, setCurrentField] = useState(0);
+
+  const handleAnimationEnd = () => {
+    setCurrentField((prev) => (prev + 1) % placeholders.length); // Move to the next field or restart
+  };
 
   return (
     <div>
@@ -287,8 +293,19 @@ const FeaturessPage = () => {
                   <h1 className="font-bold text-font22 text-[--blackish] lg:mt-5 mb-3 flex justify-center items-center">
                     Need More Help?
                   </h1>
-
                   <form className="space-y-4">
+                    {placeholders.map((placeholder, index) => (
+                      <AnimatedPlaceholderInput
+                        key={placeholder}
+                        id={`input-${index}`}
+                        placeholder={placeholder}
+                        className="border-[--goldenborder]"
+                        isActive={index === currentField} // Activate animation only for the current field
+                        onAnimationEnd={handleAnimationEnd} // Triggered when animation finishes
+                      />
+                    ))}
+                  </form>{" "}
+                  {/* <form className="space-y-4">
                     {inputIds.map((id, index) => (
                       <AnimatedPlaceholderInput
                         key={id}
@@ -299,8 +316,7 @@ const FeaturessPage = () => {
                         // onAnimationComplete={handleAnimationComplete} // Handle when animation is complete
                       />
                     ))}
-                  </form>
-
+                  </form> */}
                   <textarea
                     id="message"
                     placeholder="Type a Message"

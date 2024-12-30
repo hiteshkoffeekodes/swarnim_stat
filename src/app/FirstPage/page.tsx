@@ -760,19 +760,21 @@ const FirstPages = () => {
     );
   }, []);
   // ------------------------
-
-  // const [currentInputIndex, setCurrentInputIndex] = useState(0);
-  // const inputIds = ["text", "email", "search"];
   // const placeholders = ["Full Name", "Email", "Subject"];
+  // const [currentField, setCurrentField] = useState(0);
 
-  // const handleAnimationComplete = () => {
-  //   // Move to the next input when the current one finishes animating
-  //   if (currentInputIndex < inputIds.length - 1) {
-  //     setCurrentInputIndex((prev) => prev + 1);
-  //   }
+  // const handleAnimationEnd = () => {
+  //   setCurrentField((prev) => (prev + 1) % placeholders.length); // Move to next field or restart
   // };
 
   // -----------------------------
+ const placeholders = ["Full Name", "Email", "Subject"];
+ const [currentField, setCurrentField] = useState(0);
+
+ const handleAnimationEnd = () => {
+   setCurrentField((prev) => (prev + 1) % placeholders.length); // Move to the next field or restart
+ };
+
 
   return (
     <section>
@@ -1572,7 +1574,7 @@ const FirstPages = () => {
                     Need More Help?
                   </h1>
 
-                  <form className="space-y-4">
+                  {/* <form className="space-y-4">
                     <AnimatedPlaceholderInput
                       id="text"
                       placeholder="Full Name"
@@ -1590,16 +1592,42 @@ const FirstPages = () => {
                       placeholder="Subject"
                       className="border-[--goldenborder]"
                     />
+                  </form> */}
+
+                  {/* <form className="space-y-4">
+                    {placeholders.map((placeholder, index) => (
+                      <AnimatedPlaceholderInput
+                        key={placeholder}
+                        id={`input-${index}`}
+                        placeholder={placeholder}
+                        className="border-[--goldenborder]"
+                        isActive={index === currentField} 
+                        onAnimationEnd={handleAnimationEnd} 
+                      />
+                    ))}
+                  </form> */}
+
+                  <form className="space-y-4">
+                    {placeholders.map((placeholder, index) => (
+                      <AnimatedPlaceholderInput
+                        key={placeholder}
+                        id={`input-${index}`}
+                        placeholder={placeholder}
+                        className="border-[--goldenborder]"
+                        isActive={index === currentField} // Activate animation only for the current field
+                        onAnimationEnd={handleAnimationEnd} // Triggered when animation finishes
+                      />
+                    ))}
                   </form>
                   {/* <form className="space-y-4">
-                    {inputIds.map((id, index) => (
+                    {placeholders.map((placeholder, index) => (
                       <AnimatedPlaceholderInput
-                        key={id}
-                        id={id}
-                        placeholder={placeholders[index]}
+                        key={placeholder}
+                        id={`input-${index}`}
+                        placeholder={placeholder}
                         className="border-[--goldenborder]"
-                        isAnimating={index === currentInputIndex} // Animate only the focused input
-                        onAnimationComplete={handleAnimationComplete} // Handle when animation is complete
+                        isActive={index === currentField} // Activate animation only for the current field
+                        onAnimationEnd={handleAnimationEnd} // Triggered when animation finishes
                       />
                     ))}
                   </form> */}
