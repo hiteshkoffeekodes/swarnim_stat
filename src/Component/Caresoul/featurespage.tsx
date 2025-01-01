@@ -40,15 +40,25 @@ const FeaturesCaresoul = () => {
   ); // Initial visible items
 
   // Positions for the buttons
-  const positions = [
-    "-top-[80%]",
-    "-top-[61%]",
-    "-top-[43%]",
-    "-top-[25%]",
-    "bottom-[51%]",
-    "bottom-[42%]",
-    "bottom-[33%]",
-  ];
+  // const positions = [
+  //   "-top-[80%]",
+  //   "-top-[61%]",
+  //   "-top-[43%]",
+  //   "-top-[25%]",
+  //   "bottom-[51%]",
+  //   "bottom-[42%]",
+  //   "bottom-[33%]",
+  // ];
+
+   const positions = [
+     "-top-[75%]",
+     "-top-[51%]",
+     "-top-[28%]",
+     "-top-[4%]",
+     "bottom-[37%]",
+     "bottom-[25%]",
+     "bottom-[12%]",
+   ];
 
   const handleButtonClick = (index: number) => {
     setActiveButton(index);
@@ -88,11 +98,36 @@ const FeaturesCaresoul = () => {
         <div className="grid lg:grid-cols-12">
           <div className="col-span-3 ml-28">
             {/* Navigation Buttons */}
-            <div className="mt-5 ml-5 hidden lg:block">
+            {/* <div className="mt-5 ml-5 hidden lg:block">
               <Image src={straightline} alt="straightline" />
+            </div> */}
+            <div className="mx-[18px]">
+              <div className="relative mt-14 ml-20">
+                <div className="-mt-10 ml-4 hidden lg:block">
+                  <Image
+                    src={straightline}
+                    alt="straightline"
+                    className="h-full"
+                  />
+                </div>
+                {positions.map((position, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleButtonClick(index)}
+                    className={`absolute ${position} -bottom-[18px] hidden lg:block`}
+                  >
+                    <Image
+                      src={activeButton === index ? goldencircle : circle}
+                      alt={activeButton === index ? "goldencircle" : "circle"}
+                      width={34}
+                      height={34}
+                    />
+                  </button>
+                ))}
+              </div>
             </div>
 
-            {positions.map((position, index) => (
+            {/* {positions.map((position, index) => (
               <button
                 key={index}
                 onClick={() => handleButtonClick(index)}
@@ -105,7 +140,7 @@ const FeaturesCaresoul = () => {
                   height={44}
                 />
               </button>
-            ))}
+            ))} */}
           </div>
           <div className="col-span-9 border border-r-0 border-[--black] -mr-4">
             {visibleFeatures.map((feature, index) => (

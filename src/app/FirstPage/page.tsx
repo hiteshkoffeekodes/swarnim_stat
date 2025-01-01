@@ -1607,6 +1607,19 @@ const FirstPages = () => {
                     ))}
                   </form> */}
 
+                  {/* <form className="space-y-4">
+                    {placeholders.map((placeholder, index) => (
+                      <AnimatedPlaceholderInput
+                        key={placeholder}
+                        id={`input-${index}`}
+                        placeholder={placeholder}
+                        className="border-[--goldenborder]"
+                        isActive={index === currentField} // Activate animation only for the current field
+                        onAnimationEnd={handleAnimationEnd} // Triggered when animation finishes
+                      />
+                    ))}
+                  </form> */}
+
                   <form className="space-y-4">
                     {placeholders.map((placeholder, index) => (
                       <AnimatedPlaceholderInput

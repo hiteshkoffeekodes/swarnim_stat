@@ -20,11 +20,19 @@ const AnimatedPlaceholderInput: React.FC<AnimatedPlaceholderInputProps> = ({
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    if (!isActive) {
-      // If not active, show the full static placeholder
+    if (isActive) {
+      // Reset states when animation starts
+      setDisplayedText("");
+      setCurrentIndex(0);
+      setIsDeleting(false);
+    } else {
+      // If not active, display the full placeholder text statically
       setDisplayedText(placeholder);
-      return;
     }
+  }, [isActive, placeholder]);
+
+  useEffect(() => {
+    if (!isActive) return; // Exit if animation is not active
 
     let timeout: NodeJS.Timeout | undefined;
 
@@ -63,16 +71,94 @@ const AnimatedPlaceholderInput: React.FC<AnimatedPlaceholderInputProps> = ({
         type="text"
         placeholder=" "
         className={`text-font14 rounded-[2px] font-medium border h-[50px] appearance-none w-full text-[--blackish] bg-[--white] placeholder-transparent focus:outline-none p-1 px-2 ${className}`}
-        // readOnly // Prevent manual editing
       />
-      <span className="placeholder absolute font-medium top-[12px] left-[8px] text-[--blackish] text-font12 transition-all bg-[--white] px-1 pointer-events-none">
-        {displayedText}
+      <span
+        className={`placeholder absolute font-medium top-[12px] left-[8px] text-[--blackish] text-font12 transition-all bg-[--white] px-1 pointer-events-none`}
+      >
+        {isActive ? displayedText : placeholder}{" "}
+        {/* Show full text when not active */}
       </span>
     </div>
   );
 };
 
 export default AnimatedPlaceholderInput;
+
+// import { useEffect, useState } from "react";
+
+// interface AnimatedPlaceholderInputProps {
+//   placeholder: string;
+//   id: string;
+//   className?: string;
+//   isActive: boolean; // Determines whether the animation runs
+//   onAnimationEnd: () => void; // Callback to trigger when animation finishes
+// }
+
+// const AnimatedPlaceholderInput: React.FC<AnimatedPlaceholderInputProps> = ({
+//   placeholder,
+//   id,
+//   className = "",
+//   isActive,
+//   onAnimationEnd,
+// }) => {
+//   const [displayedText, setDisplayedText] = useState("");
+//   const [currentIndex, setCurrentIndex] = useState(0);
+//   const [isDeleting, setIsDeleting] = useState(false);
+
+//   useEffect(() => {
+//     if (!isActive) {
+//       // If not active, show the full static placeholder
+//       setDisplayedText(placeholder);
+//       return;
+//     }
+
+//     let timeout: NodeJS.Timeout | undefined;
+
+//     if (isDeleting) {
+//       // Handle deleting text
+//       if (currentIndex > 0) {
+//         timeout = setTimeout(() => {
+//           setDisplayedText((prev) => prev.slice(0, -1));
+//           setCurrentIndex((prev) => prev - 1);
+//         }, 100);
+//       } else {
+//         setIsDeleting(false);
+//         onAnimationEnd(); // Notify parent when deleting is complete
+//       }
+//     } else {
+//       // Handle typing text
+//       if (currentIndex < placeholder.length) {
+//         timeout = setTimeout(() => {
+//           setDisplayedText((prev) => prev + placeholder[currentIndex]);
+//           setCurrentIndex((prev) => prev + 1);
+//         }, 100);
+//       } else {
+//         timeout = setTimeout(() => {
+//           setIsDeleting(true); // Start deleting after typing finishes
+//         }, 1000);
+//       }
+//     }
+
+//     return () => clearTimeout(timeout);
+//   }, [currentIndex, isDeleting, placeholder, isActive, onAnimationEnd]);
+
+//   return (
+//     <div className="custom-field one relative w-full">
+//       <input
+//         id={id}
+//         type="text"
+//         placeholder=" "
+//         className={`text-font14 rounded-[2px] font-medium border h-[50px] appearance-none w-full text-[--blackish] bg-[--white] placeholder-transparent focus:outline-none p-1 px-2 ${className}`}
+//         // readOnly // Prevent manual editing
+//       />
+//       <span className="placeholder absolute font-medium top-[12px] left-[8px] text-[--blackish] text-font12 transition-all bg-[--white] px-1 pointer-events-none">
+//         {displayedText}
+//       </span>
+//     </div>
+//   );
+// };
+
+// export default AnimatedPlaceholderInput;
 
 // import { useEffect, useState } from "react";
 

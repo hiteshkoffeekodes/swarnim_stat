@@ -90,16 +90,16 @@ const AboutPage = () => {
   const [activeButton, setActiveButton] = useState(0);
 
   const settings = {
-    dots: false, // Show dots if needed
+    dots: false,
     arrows: false,
     infinite: true,
     speed: 1000,
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 4000, // Slide changes every 3 seconds
-    vertical: true, // Enables vertical sliding
-    verticalSwiping: true, // Smooth vertical swiping
+    autoplaySpeed: 4000,
+    vertical: true,
+    verticalSwiping: true,
     pauseOnHover: false,
   };
 
