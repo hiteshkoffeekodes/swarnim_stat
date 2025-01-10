@@ -18,7 +18,7 @@
     "react-responsive-carousel": "^3.2.23",
     "react-slick": "^0.30.3",
     "slick-carousel": "^1.8.1",
-    "swiper": "^11.1.15"
+    "swiper": "^11.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

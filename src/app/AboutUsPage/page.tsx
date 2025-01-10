@@ -213,7 +213,7 @@ const AboutPage = () => {
   return (
     <div>
       <div className="p-3 h-full">
-        <div className="max-w-screen-xl mx-auto container">
+        {/* <div className="max-w-screen-xl mx-auto container">
           <div className="bgfeaturespage lg:mx-10 my-10">
             <div className="lg:h-[240px] flex items-center justify-center lg:justify-start lg:pl-32">
               <h1 className="lg:text-[100px] text-[60px] font-extrabold uppercase text-[--orange]">
@@ -221,7 +221,7 @@ const AboutPage = () => {
               </h1>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="max-w-screen-lg mx-auto container ">
           <div className="lg:m-5 ">
             <div className="flex mb-5 ml-5">
@@ -300,7 +300,7 @@ const AboutPage = () => {
             </h1>
           </div>
 
-          <div className="pt-10">
+          <div className="pt-10 mb-5">
             <div className="flex gap-6 items-center lg:ml-10 mb-3">
               <Image src={singlestar} alt="singlestar" />
               <h1 className="font-extrabold uppercase text-font30 lg:text-chapter text-[--blackish] ">
@@ -321,7 +321,7 @@ const AboutPage = () => {
       <div className="h-dvh bg-[--blackish] relative">
         <div className="w-full flex justify-center h-full items-center">
           <div className="grid grid-cols-12">
-            <div className="col-span-2">
+            <div className="hidden lg:block col-span-2">
               <div className="mx-[18px]">
                 <div className="relative mt-14 ml-20">
                   <div className="-mt-10 ml-4 hidden lg:block">
@@ -349,7 +349,7 @@ const AboutPage = () => {
               </div>
             </div>
 
-            <div className="col-span-5 ml-4">
+            <div className="col-span-6 lg:col-span-5 ml-4">
               <div className="h-full flex justify-center items-center ">
                 <div className="max-w-screen-lg mx-auto container space-y-6">
                   <h1 className="font-extrabold text-font20 text-[--whitish] uppercase">
@@ -368,7 +368,7 @@ const AboutPage = () => {
               </div>
             </div>
 
-            <div className="col-span-5 ">
+            <div className="col-span-6 lg:col-span-5 ">
               <div className="h-full flex justify-center items-center">
                 <div className="max-w-screen-lg mx-auto container space-y-6 -mt-10">
                   <Image
@@ -1100,3 +1100,4 @@ export default AboutPage;
 // };
 
 // export default AboutPage;
+  

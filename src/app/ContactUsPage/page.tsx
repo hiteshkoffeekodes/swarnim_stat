@@ -1,89 +1,156 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import gsap from "gsap"; // Import GSAP for animations
-
-// import lines from "@/Image/lines.svg";
-import ani5 from "@/Image/ani5coin.svg";
-import ani1 from "@/Image/ani1.svg";
-import ani2 from "@/Image/ani2.svg";
-import ani3 from "@/Image/ani3.svg";
-import ani4 from "@/Image/ani4.svg";
+import React, { useState } from "react";
+import call from "@/Image/call.svg";
+import mail from "@/Image/mail.svg";
+import contactusgirl from "@/Image/contactusgirl.svg";
+import AnimatedPlaceholderInput from "@/Component/AnimatedInputField";
 
 const ContactPage = () => {
-  const [showAni5, setShowAni5] = useState(false);
+  // -----------------------------
+  const placeholders = ["Full Name", "Email", "Subject"];
+  const [currentField, setCurrentField] = useState(0);
 
-  useEffect(() => {
-    const tl = gsap.timeline();
-
-    tl.fromTo(
-      ".ani4",
-      { y: -200, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.6 }
-    )
-      .fromTo(
-        ".ani1",
-        { y: -200, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1.6 },
-        "-=1"
-      )
-      .fromTo(
-        ".ani2",
-        { x: 200, opacity: 0 },
-        { x: 0, opacity: 1, duration: 1.6 },
-        "-=1"
-      )
-      .fromTo(
-        ".ani3",
-        { x: -200, opacity: 0 },
-        { x: 0, opacity: 1, duration: 1.6 },
-        "-=1"
-      )
-      .fromTo(
-        ".ani5",
-        { scale: 0, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 1.6 },
-        "-=5" // Start this animation 1 second before the previous one ends
-      )
-      // Once the animation completes, show ani5
-      .call(() => setShowAni5(true), [], "+=1"); // Delay showing ani5 by 1 second after the last animation
-  }, []);
-
+  const handleAnimationEnd = () => {
+    setCurrentField((prev) => (prev + 1) % placeholders.length); // Move to the next field or restart
+  };
   return (
-    <div>
-      <div className="p-3">
-        <div className="max-w-screen-xl mx-auto container">
-          <div className="w-full h-full relative flex justify-center items-center">
-            <div>
-              <Image
-                src={ani1}
-                alt="ani1"
-                className="flex justify-center items-center w-[321px] h-[464px] ani1 absolute bottom-[6px] left-[480px]"
-              />
-              <Image
-                src={ani2}
-                alt="ani2"
-                className="flex justify-center items-center w-[458px] h-[444px] ani2 absolute bottom-[6px] right-[410px]"
-              />
-              <Image
-                src={ani3}
-                alt="ani3"
-                className="flex justify-center items-center w-[541px] h-[416px] ani3 absolute bottom-[6px] right-[370px]"
-              />
-              <Image
-                src={ani4}
-                alt="ani4"
-                className="flex justify-center items-center w-[1031px] h-[460px] ani4"
-              />
+    <div className="max-w-screen-xl mx-auto container p-2">
+      <div className="grid md:grid-cols-12 relative">
+        <div className="col-span-6">
+          <h1 className="font-extrabold uppercase text-[24px] text-[--orange]">
+            contact us{" "}
+          </h1>
+          <div className="max-w-[470px]">
+            <h1 className="relative font-extrabold uppercase text-font18 leading-[29px] lg:text-font24 text-[--blackish]  ">
+              We value your input <br className="hidden lg:block" /> share with
+              us
+            </h1>
+            <div className=" mt-3">
+              <h1 className="font-normal text-font10 lg:text-font12 text-[--blackish] mb-3 ">
+                Lorem ipsum dolor sit amet consectetur. Tristique sociis nunc
+                amet erat. Aenean magna lectus viverra eros nullam at ac. Et
+                auctor massa tellus vestibulum. Posuere facilisis sed nunc
+                elementum condimentum sed ultrices. Feugiat ultrices eu risus.
+              </h1>
             </div>
-            {/* Conditionally render ani5 after the animations are completed */}
-            {showAni5 && (
-              <Image
-                src={ani5}
-                alt="ani5"
-                className="ani5 absolute top-[86px] animate-ping-linear hidden lg:block"
-              />
-            )}
+            <div className="flex gap-5 my-7 ml-7">
+              <div className="bg-[--orange] rounded-md w-[60px] h-[60px]">
+                <Image
+                  src={call}
+                  alt="call"
+                  className="m-[13px] flex justify-center items-center"
+                  width={36}
+                  height={36}
+                />
+              </div>
+              <div className="flex flex-col justify-center">
+                <h1 className="text-font12 font-semibold text-[--blackish]">
+                  Phone
+                </h1>
+                <h1 className="text-font20 font-extrabold text-[--blackish]">
+                  +91 123 456 3698{" "}
+                </h1>
+              </div>
+            </div>
+            <div className="flex gap-5 ml-7 mb-7">
+              <div className="bg-[--orange] rounded-md w-[60px] h-[60px]">
+                <Image
+                  src={mail}
+                  alt="mail"
+                  className="m-[13px] flex justify-center items-center"
+                  width={36}
+                  height={36}
+                />
+              </div>
+              <div className="flex flex-col justify-center">
+                <h1 className="text-font12 font-semibold text-[--blackish]">
+                  Email ID
+                </h1>
+                <h1 className="text-font20 font-extrabold text-[--blackish]">
+                  info@swarnim.com
+                </h1>
+              </div>
+            </div>
+            <div className="flex gap-5 ml-7">
+              <div className="bg-[--orange] rounded-md w-[60px] h-[60px]">
+                <Image
+                  src={mail}
+                  alt="mail"
+                  className="m-[13px] flex justify-center items-center"
+                  width={36}
+                  height={36}
+                />
+              </div>
+              <div className="flex flex-col justify-center">
+                <h1 className="text-font12 font-semibold text-[--blackish]">
+                  Address{" "}
+                </h1>
+                <h1 className="text-font20 font-extrabold text-[--blackish]">
+                  info@swarnim.com{" "}
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="contactusbg absolute h-[361px] z-50 -ml-40"></div>
+        <div className="col-span-6">
+          <Image
+            src={contactusgirl}
+            alt="contactusgirl"
+            className="lg:max-w-[567px] h-[455px]"
+          />
+        </div>
+      </div>
+
+      <div className="lg:py-10 p-3">
+        <div className="max-w-screen-xl mx-auto container relative">
+          <div className="bg-[--white] border border-[--bordercolor] shadow-lg rounded-[10px] mt-3 lg:-mt-5 lg:-mb-[89px]">
+            <div className="grid md:grid-cols-2">
+              {/* <div className="bg-[--white] border border-[--bordercolor] shadow-lg rounded-[10px] mt-3 lg:-mt-5 lg:-mb-[89px]"> */}
+              <div className="justify-center items-center flex">
+                <div className=" lg:max-w-[560px] w-full space-y-5 lg:py-5 m-2">
+                  <h1 className="font-bold text-font22 text-[--blackish] lg:mt-5 mb-3 flex justify-center items-center">
+                    Need More Help?
+                  </h1>
+
+                  <form className="space-y-4">
+                    {placeholders.map((placeholder, index) => (
+                      <AnimatedPlaceholderInput
+                        key={placeholder}
+                        id={`input-${index}`}
+                        placeholder={placeholder}
+                        className="border-[--goldenborder]"
+                        isActive={index === currentField} // Activate animation only for the current field
+                        onAnimationEnd={handleAnimationEnd} // Triggered when animation finishes
+                      />
+                    ))}
+                  </form>
+
+                  <textarea
+                    id="message"
+                    placeholder="Type a Message"
+                    className="text-font14 h-[113px] rounded-[2px] font-medium border border-[--goldenborder] appearance-none w-full text-[--blackish] placeholder:text-[--blackish] placeholder:text-font12 focus:outline-none p-1 px-2"
+                  />
+                  <div className="flex justify-center items-center lg:pb-5 pb-2 mt-3">
+                    <button className="relative overflow-hidden text-font13 lg:text-font14 font-bold text-[--white] hover:opacity-90 cursor-pointer uppercase border bg-[--orange] border-[--orange] rounded-md px-[55px] py-[13px]">
+                      submit
+                      <span className="absolute inset-0 bg-gradient-to-r hover:bg-none hover:animate-none from-[--orange] via-[--orangeback] to-[--orange] opacity-50 group-hover:animate-shimmer"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex justify-center items-center w-full p-2">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13735.40987764886!2d73.12782123030716!3d25.11536597681942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39429451e5c8b98d%3A0xe63fbd0579e8e80d!2sJawai%20Bandh%2C%20Rajasthan%20306126!5e1!3m2!1sen!2sin!4v1736521371472!5m2!1sen!2sin"
+                  width={"100%"}
+                  max-width="566"
+                  height="490"
+                  loading="lazy"
+                ></iframe>
+              </div>
+            </div>
           </div>
         </div>
       </div>

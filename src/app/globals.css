@@ -12,7 +12,6 @@ html {
   scroll-behavior: smooth;
 }
 
-
 * {
   font-family: "Montserrat", serif;
 }
@@ -29,16 +28,33 @@ html {
   --golden: #f0db92;
   --goldengradient: #bf9033;
   --goldenborder: #cfa767;
+  --silver: #e1e4ea;
 }
 
 .listStyle {
   color: var(--orange);
 }
 
-.bghomepaage {
+.amazonfont {
+  font-family: "Amazon Ember";
+}
+
+.contactusbg {
   background-image: none;
 }
 
+@media (min-width: 1240px) {
+  .contactusbg {
+    background-image: url("../../public/image/contactusbg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+
+.bghomepaage {
+  background-image: none;
+}
 @media (min-width: 1240px) {
   .bghomepaage {
     background-image: url("../../public/image/rectanglebg.svg");
@@ -50,7 +66,6 @@ html {
 .aboushadow {
   background-image: none;
 }
-
 @media (min-width: 1240px) {
   .aboushadow {
     background-image: url("../../public/image/aboushadow.svg");
@@ -59,7 +74,7 @@ html {
   }
 }
 
-.bgfeaturespage {
+/* .bgfeaturespage {
   background-image: none;
 }
 
@@ -68,6 +83,17 @@ html {
     background-image: url("../../public/image/featuresbg.svg");
     background-repeat: no-repeat;
     background-size: cover;
+  }
+} */
+.bgfeaturespage {
+  background-image: none;
+}
+
+@media (min-width: 1240px) {
+  .bgfeaturespage {
+    background-image: url("../../public/image/featurespagebgsmall.svg");
+    background-repeat: no-repeat;
+    /* background-size: cover; */
   }
 }
 
@@ -144,17 +170,18 @@ html {
 }
 
 @keyframes bounce {
-    0%, 100% {
-        transform: translateY(-25%);
-        animation-timing-function: cubic-bezier(0.8,0,1,1);
-    }
-    50% {
-        transform: none;
-        animation-timing-function: cubic-bezier(0,0,0.2,1);
-    }
+  0%,
+  100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
 }
 .animate-bounce {
-    animation: bounce 1s 5;
+  animation: bounce 1s 5;
 }
 
 .animate-left-to-right {
@@ -222,8 +249,6 @@ input::placeholder {
   overflow: hidden;
 }
 
-
-
 /* .section1{
   position: relative;
   width: 100%;
@@ -284,8 +309,6 @@ padding-top: 25px;
     background-position-x: -1000px; 
   }
 } */
-
-
 
 .custom-field.one input {
   background: none;
@@ -372,7 +395,6 @@ padding-top: 25px;
 .animate-gradient-bottom-right {
   animation: animate-gradient-bottom-right 1s forwards;
 }  */
-
 
 @keyframes fadeIn {
   0% {
@@ -461,7 +483,6 @@ padding-top: 25px;
 .message3 {
   animation: slideInFromRight 1s ease-out forwards;
 }
-
 
 .invisible {
   opacity: 0;
