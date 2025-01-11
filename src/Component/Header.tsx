@@ -56,7 +56,7 @@ const Header = () => {
             />{" "}
           </button>
           {isDropdownOpen && (
-            <div className="absolute mt-60 ml-10 bg-white shadow-lg w-[200px] border border-[--bordercolor] z-10">
+            <div className="absolute mt-60 ml-10 bg-white shadow-lg w-[200px] border border-[--bordercolor] z-50">
               <ul className="text-sm text-[--black]">
                 <li
                   onClick={() =>
