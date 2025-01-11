@@ -26,7 +26,6 @@ import works2 from "@/Image/works2.svg";
 import works3 from "@/Image/works3.svg";
 import arrowup from "@/Image/arrowup.svg";
 import arrowdown from "@/Image/arrowdown.svg";
-
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
 import AnimatedPlaceholderInput from "@/Component/AnimatedInputField";
@@ -35,7 +34,7 @@ import TestimonialsCaresoul from "@/Component/Caresoul/testimonials";
 gsap.registerPlugin(TextPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
-const FeaturessPage = () => {
+const CustomReportPage = () => {
   const textRef = useRef(null);
   const linesRef = useRef(null);
   const imageRef = useRef(null);
@@ -357,6 +356,7 @@ const FeaturessPage = () => {
           </div>
         </div>
       </div>
+
       {/* 3th Page */}
       <div className="lg:py-10 p-3">
         <div className="max-w-screen-xl mx-auto container relative">
@@ -560,4 +560,4 @@ const FeaturessPage = () => {
   );
 };
 
-export default FeaturessPage;
+export default CustomReportPage;

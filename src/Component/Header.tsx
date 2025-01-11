@@ -10,7 +10,14 @@ import { usePathname, useRouter } from "next/navigation";
 const Header = () => {
   const router = useRouter();
   const pathname = usePathname();
-  console.log("pathname::: ", pathname);
+  // console.log("pathname::: ", pathname);
+
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const handleNavigation = (path: string) => {
+    setIsDropdownOpen(false); // Close dropdown
+    router.push(path);
+  };
 
   const handleClick = () => {
     router.push("/AboutUsPage"); // Navigate to About Page
@@ -36,12 +43,62 @@ const Header = () => {
           >
             Home
           </h1>
-          <h1
-            onClick={() => router.push("/FeaturesPage")} // Navigate to Features
-            className={`text-font12 ${getActiveClass("/FeaturesPage")}`}
+          <button
+            // onClick={() => router.push("/FeaturesPage")} // Navigate to Features
+            onClick={() => setIsDropdownOpen((prev) => !prev)}
+            className="text-font12 font-bold text-[--black] hover:text-[--orange] cursor-pointer uppercase flex gap-1 relative"
           >
             Features
-          </h1>
+            <MdArrowDropDown
+              className={`text-font18 text-[--orange] transition-transform duration-200 ${
+                isDropdownOpen ? "rotate-180" : "rotate-0"
+              }`}
+            />{" "}
+          </button>
+          {isDropdownOpen && (
+            <div className="absolute mt-60 ml-10 bg-white shadow-lg w-[200px] border border-[--bordercolor] z-10">
+              <ul className="text-sm text-[--black]">
+                <li
+                  onClick={() =>
+                    handleNavigation("/FeaturesPage/LiveMetalsRateUpdates")
+                  }
+                  className="px-2 py-2 hover:bg-[--orange] hover:text-[--white] bg-[--whitish] border-b border-[--bordercolor] cursor-pointer font-normal text-font14"
+                >
+                  Live Metals Rate Updates
+                </li>
+                <li
+                  onClick={() =>
+                    handleNavigation("/FeaturesPage/SalesTaxManagement")
+                  }
+                  className="px-2 py-2 hover:bg-[--orange] hover:text-[--white] bg-[--whitish] border-b border-[--bordercolor] cursor-pointer font-normal text-font14"
+                >
+                  Sales / Tax Management
+                </li>
+                <li
+                  onClick={() =>
+                    handleNavigation("/FeaturesPage/InventoryManagement")
+                  }
+                  className="px-2 py-2 hover:bg-[--orange] hover:text-[--white] bg-[--whitish] border-b border-[--bordercolor] cursor-pointer font-normal text-font14"
+                >
+                  Inventory Management
+                </li>
+                <li
+                  onClick={() =>
+                    handleNavigation("/FeaturesPage/CustomReportingPage")
+                  }
+                  className="px-2 py-2 hover:bg-[--orange] hover:text-[--white] bg-[--whitish] border-b border-[--bordercolor] cursor-pointer font-normal text-font14"
+                >
+                  Custom Reporting
+                </li>
+                <li
+                  onClick={() => handleNavigation("/custom-reporting")}
+                  className="px-2 py-2 hover:bg-[--orange] hover:text-[--white] bg-[--whitish] cursor-pointer font-normal text-font14"
+                >
+                  xyz{" "}
+                </li>
+              </ul>
+            </div>
+          )}
           <h1
             onClick={handleClick} // Navigate to About Us
             className={`text-font12 ${getActiveClass("/AboutUsPage")}`}
@@ -71,7 +128,6 @@ const Header = () => {
     </section>
   );
 };
-
 
 const Sidebar = ({
   isOpen,
@@ -120,12 +176,21 @@ const Sidebar = ({
           >
             Home
           </h1>
-          <h1
+          {/* <h1
             onClick={() => router.push("/FeaturesPage")} // Navigate to Features
             className="text-font12 font-bold text-[--black] hover:text-[--orange] cursor-pointer uppercase"
           >
             Features
-          </h1>
+            <MdArrowDropDown className="text-font18 text-[--orange]" />
+          </h1> */}
+
+          <button
+            onClick={() => router.push("/FeaturesPage")} // Navigate to Features
+            className="text-font12 font-bold text-[--black] hover:text-[--orange] cursor-pointer uppercase flex gap-1"
+          >
+            Features
+            <MdArrowDropDown className="text-font18 text-[--orange]" />
+          </button>
           <h1
             onClick={handleClick} // Navigate to About Us
             className="text-font12 font-bold text-[--black] hover:text-[--orange] cursor-pointer uppercase"
