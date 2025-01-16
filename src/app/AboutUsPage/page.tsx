@@ -20,7 +20,6 @@ import testimonialline from "@/Image/testimonialline.svg";
 import absoluteline from "@/Image/absoluteline.svg";
 import circle from "@/Image/circle.svg";
 import goldencircle from "@/Image/goldencircle.svg";
-// import AboutUsCaresoul from "@/Component/Caresoul/aboutuspage";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -1100,4 +1099,3 @@ export default AboutPage;
 // };
 
 // export default AboutPage;
-  
