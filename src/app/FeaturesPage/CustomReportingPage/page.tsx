@@ -210,6 +210,10 @@ const CustomReportPage = () => {
                 alt="worldlogo"
                 className="absolute -top-[90px] left-[30px] "
               />
+              {/* <div className="progress-circle animated">
+                <div className="inner-circle">75%</div>
+              </div> */}
+
               <Image
                 src={circlebroken}
                 alt="circlebroken"

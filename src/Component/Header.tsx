@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import headerlogo from "@/Image/headerlogo.svg";
 import { MdArrowDropDown } from "react-icons/md";
@@ -11,6 +11,7 @@ const Header = () => {
   const router = useRouter();
   const pathname = usePathname();
   // console.log("pathname::: ", pathname);
+  const dropdownRef = useRef<HTMLDivElement | null>(null); // Typed Ref
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -29,6 +30,22 @@ const Header = () => {
       ? "text-[--orange] font-bold uppercase cursor-pointer" // Active page style
       : "text-[--black] hover:text-[--orange] font-bold uppercase cursor-pointer"; // Default style
   };
+
+  useEffect(() => {
+     const handleClickOutside = (event: MouseEvent) => {
+       if (
+         dropdownRef.current &&
+         !dropdownRef.current.contains(event.target as Node)
+       ) {
+         setIsDropdownOpen(false);
+       }
+     };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <section className="footer-container bg-gradient-to-b from-[--orangebacksss] via-[--whitish] to-[--orangebacksss] animate-gradient hidden lg:block ">
@@ -56,7 +73,10 @@ const Header = () => {
             />{" "}
           </button>
           {isDropdownOpen && (
-            <div className="absolute mt-60 ml-10 bg-white shadow-lg w-[200px] border border-[--bordercolor] z-50">
+            <div
+              ref={dropdownRef}
+              className="absolute mt-60 ml-10 bg-white shadow-lg w-[200px] border border-[--bordercolor] z-50"
+            >
               <ul className="text-sm text-[--black]">
                 <li
                   onClick={() =>
