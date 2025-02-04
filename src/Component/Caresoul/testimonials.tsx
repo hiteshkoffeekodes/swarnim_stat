@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import React, { useRef, useState } from "react";
 import blackline from "@/Image/blackline.svg";
@@ -148,7 +149,7 @@ const TestimonialsCaresoul = () => {
                       src={goldencircle}
                       alt="goldencircle"
                       className="max-w-[200px]"
-                    />
+                    /> 
                     <Image
                       src={testimonial.image}
                       alt={`${testimonial.name}'s image`}

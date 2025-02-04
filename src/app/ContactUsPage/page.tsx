@@ -3,7 +3,10 @@ import Image from "next/image";
 import React, { useState } from "react";
 import call from "@/Image/call.svg";
 import mail from "@/Image/mail.svg";
-import contactusgirl from "@/Image/contactusgirl.svg";
+// import contactusgirl from "@/Image/contactusgirl.svg";
+import contactusgirl from "@/Image/girlwithouttriangle.svg";
+import triangle from "@/Image/triangle.svg";
+import settttingcontactus from "@/Image/settttingcontactus.svg";
 import AnimatedPlaceholderInput from "@/Component/AnimatedInputField";
 
 const ContactPage = () => {
@@ -93,13 +96,32 @@ const ContactPage = () => {
             </div>
           </div>
         </div>
-        <div className="contactusbg absolute h-[361px] z-50 -ml-40"></div>
-        <div className="col-span-6">
+        <div className="coooontactbg absolute h-[361px] z-50 -ml-40"></div>
+        <div className="col-span-6 relative">
           <Image
             src={contactusgirl}
             alt="contactusgirl"
             className="lg:max-w-[567px] h-[455px]"
           />
+          <Image
+            src={triangle}
+            alt="triangle"
+            className="absolute bottom-[150px] right-[270px] animate-spin"
+          />
+          <Image
+            src={settttingcontactus}
+            alt="settttingcontactus"
+            className="absolute top-[150px] left-[50px] animate-spin"
+          />
+
+          {/* Instagram-style animated logo */}
+          {/* <div className="instagram">
+            <div className="logo">
+              <div className="logo_border"></div>
+              <div className="logo_circle"></div>
+              <div className="logo_light"></div>
+            </div>
+          </div> */}
         </div>
       </div>
 
